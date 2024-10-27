@@ -13,7 +13,7 @@ POP_SIZE = 500
 MUT_RATE = 0.2
 
 #TARGET: Our goal.
-TARGET = st.text_input("Enter your name")
+TARGET = st.text_input("Enter your name","dayana")
 
 #GENES: Options from which our population would be created.
 GENES = ' abcdefghijklmnopqrstuvwxyz'
