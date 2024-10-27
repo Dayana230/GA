@@ -129,5 +129,7 @@ def main(POP_SIZE, MUT_RATE, TARGET, GENES):
         break
       st.write('String: ' + str(population[0][0]) + ' Generation: ' + str(generation) + ' Fitness: ' + str(population[0][1]))
       generation+=1
+
+result = main(POP_SIZE, MUT_RATE, TARGET, GENES)
    
 
