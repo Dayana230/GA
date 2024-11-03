@@ -35,9 +35,9 @@ col1, col2, col3 = st.columns([2, 1, 1])  # Define three columns
 for i in range(1, 11):
     # Dropdown to select city name from predefined list
     city_name = col1.selectbox(
-        f"City {i} name"
-      #  options=[""] + list(city_icons.keys()),  # Empty option for blank selection
-      #  key=f"city_name_{i}"
+        f"City {i} name",
+        options=[""] + list(city_icons.keys()),  # Empty option for blank selection
+        key=f"city_name_{i}"
     )
     
     # Show icon next to selected city name
