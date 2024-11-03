@@ -130,22 +130,28 @@ def run_ga(cities_names, n_population, n_generations, crossover_per, mutation_pe
 
 # Run the GA and plot the best route
 if st.button("Submit"):
+    # Initial Population Plot
+    initial_population = initial_population(cities_names, n_population=5)  # Limit initial routes for clarity
+    fig1, ax1 = plt.subplots()
+    for route in initial_population:
+        x_route, y_route = zip(*(city_coords[city] for city in route + [route[0]]))
+        ax1.plot(x_route, y_route, 'o-', label="Route")
+    ax1.set_title("Initial Random Routes")
+    fig1.set_size_inches(8, 6)
+    st.pyplot(fig1)
+    
+    # GA Optimized Route Plot
     best_mixed_offspring = run_ga(cities_names, n_population, n_generations, crossover_per, mutation_per)
     total_dist_all_individuals = [total_dist_individual(ind) for ind in best_mixed_offspring]
     index_minimum = np.argmin(total_dist_all_individuals)
     minimum_distance = min(total_dist_all_individuals)
-
-    # Shortest path
-    shortest_path = best_mixed_offspring[index_minimum]
-    st.write("Shortest Path:", shortest_path)
     
+    shortest_path = best_mixed_offspring[index_minimum]
     x_shortest, y_shortest = zip(*(city_coords[city] for city in shortest_path))
     x_shortest, y_shortest = list(x_shortest) + [x_shortest[0]], list(y_shortest) + [y_shortest[0]]
     
-    fig, ax = plt.subplots()
-    ax.plot(x_shortest, y_shortest, '--go', label='Best Route', linewidth=2.5)
-    plt.legend()
-    
-    plt.title(f"TSP Best Route Using GA\nTotal Distance: {round(minimum_distance, 3)}")
-    fig.set_size_inches(16, 12)
-    st.pyplot(fig)
+    fig2, ax2 = plt.subplots()
+    ax2.plot(x_shortest, y_shortest, '--go', label='Best Route', linewidth=2.5)
+    ax2.set_title(f"TSP Best Route Using GA\nTotal Distance: {round(minimum_distance, 3)}")
+    fig2.set_size_inches(8, 6)
+    st.pyplot(fig2)
