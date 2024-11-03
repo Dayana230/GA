@@ -22,8 +22,8 @@ col1, col2, col3 = st.columns([2, 1, 1])  # Define three columns
 # Collect user input in each row
 for i in range(1, 11):
     city_name = col1.text_input(f"City {i} ", key=f"city_name_{i}")
-    x_coord = col2.number_input(f"x-coordinate (City {i})", min_value=0, max_value=0, key=f"x_coord_{i}")
-    y_coord = col3.number_input(f"y-coordinate (City {i})", min_value=0, max_value=0, key=f"y_coord_{i}")
+    x_coord = col2.number_input(f"x-coordinate (City {i})", min_value=0, max_value=100, key=f"x_coord_{i}")
+    y_coord = col3.number_input(f"y-coordinate (City {i})", min_value=0, max_value=100, key=f"y_coord_{i}")
 
     # Store data if the city name is provided
     if city_name:
