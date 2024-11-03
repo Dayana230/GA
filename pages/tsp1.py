@@ -17,9 +17,7 @@ city_coords = {}
 col1, col2, col3 = st.columns([2, 1, 1])  # Define three columns
 
 # Header Row
-col1.write("City Name")
-col2.write("X-coordinate")
-col3.write("Y-coordinate")
+
 
 # Collect user input in each row
 for i in range(1, 11):
