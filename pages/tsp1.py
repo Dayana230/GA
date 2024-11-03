@@ -1,27 +1,13 @@
-import matplotlib.pyplot as plt
-from itertools import permutations, combinations
-from random import shuffle
-import random
-import numpy as np
-import statistics
-import pandas as pd
-import seaborn as sns
 import streamlit as st
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
 
 # Title
 st.title("City Coordinates Input")
 st.write("Enter up to 10 cities with their coordinates (x, y) in range 0 - 100.")
 
-# Define empty lists to store city names and coordinates
-cities_name = []
-city_coords = {}
-
-# Create a table-like layout in landscape format
-col1, col2, col3 = st.columns([2, 1, 1])  # Define three columns
-
-# Header Row
-
-# City Icons
+# Define city names with icons
 city_icons = {
     "Gliwice": "♕",
     "Cairo": "♖",
@@ -35,15 +21,35 @@ city_icons = {
     "Budapest": "♝"
 }
 
-fig, ax = plt.subplots()
+# Define empty lists to store city names and coordinates
+cities_names = []
+city_coords = {}
 
-ax.grid(False)  # Grid
+# Create a table-like layout in landscape format
+col1, col2, col3 = st.columns([2, 1, 1])  # Define three columns
+
+# Header Row
+col1.write("City (with Icon)")
+col2.write("X-coordinate")
+col3.write("Y-coordinate")
 
 # Collect user input in each row
 for i in range(1, 11):
-    city_name = col1.text_input(f"City {i} ", key=f"city_name_{i}")
-    x_coord = col2.number_input(f"x-coordinate (City {i})", min_value=0, max_value=100, key=f"x_coord_{i}")
-    y_coord = col3.number_input(f"y-coordinate (City {i})", min_value=0, max_value=100, key=f"y_coord_{i}")
+    # Dropdown to select city name from predefined list
+    city_name = col1.selectbox(
+        f"City {i} name", 
+        options=[""] + list(city_icons.keys()),  # Empty option for blank selection
+        key=f"city_name_{i}"
+    )
+    
+    # Show icon next to selected city name
+    if city_name:
+        city_icon = city_icons[city_name]
+        col1.markdown(f"{city_icon} **{city_name}**")
+    
+    # Input fields for x and y coordinates
+    x_coord = col2.number_input(f"x-coordinate (City {i})", min_value=0, max_value=100, step=1, key=f"x_coord_{i}")
+    y_coord = col3.number_input(f"y-coordinate (City {i})", min_value=0, max_value=100, step=1, key=f"y_coord_{i}")
 
     # Store data if the city name is provided
     if city_name:
@@ -66,7 +72,10 @@ if st.button("Submit"):
     for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
         color = colors[i]
         ax.scatter(city_x, city_y, c=[color], s=1200, zorder=2)
-        ax.annotate(city, (city_x, city_y), fontsize=12, ha='center', va='bottom')
+        
+        # Display icon with city name on the plot
+        city_icon = city_icons.get(city, "")
+        ax.annotate(f"{city_icon} {city}", (city_x, city_y), fontsize=12, ha='center', va='bottom')
 
         # Draw faint lines between each pair of cities
         for j, (other_city, (other_x, other_y)) in enumerate(city_coords.items()):
