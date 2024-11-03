@@ -10,7 +10,7 @@ st.title("City Coordinates Input")
 st.write("Enter up to 10 cities with their coordinates (x, y) in range 0 - 100.")
 
 # Define empty lists to store city names and coordinates
-cities_names = ['Johor']
+cities_name = ["Gliwice", "Cairo", "Rome", "Krakow", "Paris", "Alexandria", "Berlin", "Tokyo", "Rio", "Budapest"]
 city_coords = {}
 
 # Create a table-like layout in landscape format
