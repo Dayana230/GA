@@ -1,16 +1,19 @@
-import streamlit as st
 import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
-from itertools import permutations
+from itertools import permutations, combinations
+from random import shuffle
 import random
+import numpy as np
+import statistics
+import pandas as pd
+import seaborn as sns
+import streamlit as st
 
 # Title
 st.title("City Coordinates Input")
 st.write("Enter up to 10 cities with their coordinates (x, y) in range 0 - 100.")
 
 # Define empty lists to store city names and coordinates
-cities_name = ["Gliwice", "Cairo", "Rome", "Krakow", "Paris", "Alexandria", "Berlin", "Tokyo", "Rio", "Budapest"]
+cities_name = []
 city_coords = {}
 
 # Create a table-like layout in landscape format
@@ -18,6 +21,23 @@ col1, col2, col3 = st.columns([2, 1, 1])  # Define three columns
 
 # Header Row
 
+# City Icons
+city_icons = {
+    "Gliwice": "♕",
+    "Cairo": "♖",
+    "Rome": "♗",
+    "Krakow": "♘",
+    "Paris": "♙",
+    "Alexandria": "♔",
+    "Berlin": "♚",
+    "Tokyo": "♛",
+    "Rio": "♜",
+    "Budapest": "♝"
+}
+
+fig, ax = plt.subplots()
+
+ax.grid(False)  # Grid
 
 # Collect user input in each row
 for i in range(1, 11):
