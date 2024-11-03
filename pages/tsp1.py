@@ -108,7 +108,8 @@ if st.button("Submit"):
     plt.legend()
 
     for i in range(len(x_shortest) - 1):
-        ax.annotate(f"{i+1} - {shortest_path[i]}", (x_shortest[i], y_shortest[i]), fontsize=12)
+        city_icon = city_icons.get(shortest_path[i], "")
+        ax.annotate(f"{i+1} - {city_icon} {shortest_path[i]}", (x_shortest[i], y_shortest[i]), fontsize=12)
 
     plt.title("TSP Best Route Using GA")
     fig.set_size_inches(16, 12)
