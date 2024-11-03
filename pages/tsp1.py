@@ -14,16 +14,16 @@ st.write("Enter up to 10 cities with their coordinates (x, y) in range 0 - 100."
 
 # Define city names with icons
 city_icons = {
-    "Gliwice": "♕",
-    "Cairo": "♖",
-    "Rome": "♗",
-    "Krakow": "♘",
-    "Paris": "♙",
-    "Alexandria": "♔",
-    "Berlin": "♚",
-    "Tokyo": "♛",
-    "Rio": "♜",
-    "Budapest": "♝"
+    "Johor": "♕",
+    "Melaka": "♖",
+    "Negeri Sembilan": "♗",
+    "Selangor": "♘",
+    "Kuala Lumpur": "♙",
+    "Perak": "♔",
+    "Kedah": "♚",
+    "Kelantan": "♛",
+    "Terengganu": "♜",
+    "Pulau Pinang": "♝"
 }
 
 # Define empty lists to store city names and coordinates
