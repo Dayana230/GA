@@ -1,7 +1,13 @@
-import streamlit as st
 import matplotlib.pyplot as plt
-import seaborn as sns
+from itertools import permutations, combinations
+from random import shuffle
+import random
 import numpy as np
+import statistics
+import pandas as pd
+import seaborn as sns
+import streamlit as st
+
 
 # Title
 st.title("City Coordinates Input")
@@ -41,9 +47,7 @@ for i in range(1, 11):
     )
     
     # Show icon next to selected city name
-    if city_name:
-        city_icon = city_icons[city_name]
-        col1.markdown(f"{city_icon} **{city_name}**")
+    
     
     # Input fields for x and y coordinates
     x_coord = col2.number_input(f"x-coordinate (City {i})", min_value=0, max_value=100, step=1, key=f"x_coord_{i}")
