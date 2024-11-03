@@ -29,16 +29,14 @@ city_coords = {}
 col1, col2, col3 = st.columns([2, 1, 1])  # Define three columns
 
 # Header Row
-col1.write("City (with Icon)")
-col2.write("X-coordinate")
-col3.write("Y-coordinate")
+
 
 # Collect user input in each row
 for i in range(1, 11):
     # Dropdown to select city name from predefined list
     city_name = col1.selectbox(
         f"City {i} name", 
-        options=[""] + list(city_icons.keys()),  # Empty option for blank selection
+      #  options=[""] + list(city_icons.keys()),  # Empty option for blank selection
         key=f"city_name_{i}"
     )
     
